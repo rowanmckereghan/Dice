@@ -3,29 +3,28 @@ void setup()
 	noLoop();
 	size(500,500);
 }
+
 int colorG = 255;
 int colorB = 255;
-
 void draw()
 {
-	color gradient = color(100, colorG, colorB);
 	background(0);
 	for(int x = 50; x < 450; x = x + 50)
 	{
 		for (int y = 50; y < 450; y = y + 50)
 		{
-			for (int z = 10; z < 255; z = z + 10)
-			{
-				for (int ab = 10; ab < 255; ab = ab + 10)
-	Die numberOne = new Die(x, y, z, ab);
+	Die numberOne = new Die(x, y, (int)(Math.random()*256), colorG, colorB); //(int)(Math.random()*256), (int)(Math.random()*256));
 	numberOne.show();
-}
+	colorG = colorG - ((int)(Math.random()*6));
+	colorG = colorG - ((int)(Math.random()*6));
 }
 }
 }
 void mousePressed()
 {
 	redraw();
+	colorG = 255;
+	colorB =255;
 }
 class Die //models one single dice cube
 {
@@ -33,14 +32,12 @@ class Die //models one single dice cube
 	color gradient;
 	double randomNum = Math.random();
 	
-	Die(int x, int y, int z, int ab) //constructor
+	Die(int x, int y, int cd, int z, int ab) //constructor
 	{
 		size = 50;
 		dx = x;
 		dy = y;
-		colorG = z;
-		colorB = ab;
-		gradient = color(100, colorG, colorB);
+		gradient = color(cd, z, ab);
 
 	}
 	void roll()
