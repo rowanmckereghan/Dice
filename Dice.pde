@@ -25,6 +25,7 @@ void draw()
 fill(255);
 
 text("Dice Sum: " + sum, 210, 475);
+sum = 0;
 }
 void mousePressed()
 {
