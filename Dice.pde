@@ -2,10 +2,12 @@ void setup()
 {
 	noLoop();
 	size(500,500);
+
 }
 
 int colorG = 255;
 int colorB = 255;
+int sum = 0;
 void draw()
 {
 	background(0);
@@ -17,8 +19,12 @@ void draw()
 	numberOne.show();
 	colorG = colorG - ((int)(Math.random()*6));
 	colorG = colorG - ((int)(Math.random()*6));
+	sum = sum + numberOne.count;
 }
 }
+fill(255);
+
+text("Dice Sum: " + sum, 210, 475);
 }
 void mousePressed()
 {
@@ -28,7 +34,7 @@ void mousePressed()
 }
 class Die //models one single dice cube
 {
-	int size, dx, dy, colorG, colorB;
+	int size, dx, dy, colorG, colorB, count;
 	color gradient;
 	double randomNum = Math.random();
 	
@@ -38,6 +44,7 @@ class Die //models one single dice cube
 		dx = x;
 		dy = y;
 		gradient = color(cd, z, ab);
+		count = 0;
 
 	}
 	void roll()
@@ -53,6 +60,7 @@ class Die //models one single dice cube
 		{
 			fill(0);
 			ellipse(dx +25, dy+25, 8, 8);
+			count = 1;
 		}
 		if ((1.0/6) < randomNum && randomNum < (2.0/6))
 
@@ -60,6 +68,7 @@ class Die //models one single dice cube
 			fill(0);
 			ellipse(dx + 15, dy + 25, 8, 8);
 			ellipse(dx + 35, dy + 25, 8, 8);
+			count = 2;
 		}
 		if ((2.0/6) < randomNum && randomNum < (3.0/6))
 		{
@@ -67,6 +76,7 @@ class Die //models one single dice cube
 			ellipse(dx + 25, dy+ 25, 8, 8);
 			ellipse(dx + 15, dy+ 15, 8, 8);
 			ellipse(dx + 35, dy+ 35, 8, 8);
+			count = 3;
 		}
 		if ((3.0/6) < randomNum && randomNum < (4.0/6))
 		{
@@ -75,6 +85,7 @@ class Die //models one single dice cube
 			ellipse(dx + 35, dy+ 15, 8, 8);
 			ellipse(dx + 15, dy+ 35, 8, 8);
 			ellipse(dx + 35, dy+ 35, 8, 8);
+			count = 4;
 		}
 		if ((4.0/6) < randomNum && randomNum < (5.0/6))
 		{
@@ -84,6 +95,7 @@ class Die //models one single dice cube
 			ellipse(dx + 15, dy+ 35, 8, 8);
 			ellipse(dx + 35, dy+ 35, 8, 8);
 			ellipse(dx + 25, dy+ 25, 8, 8);
+			count  = 5; 
 		}
 		if (randomNum > (5.0/6))
 		{
@@ -94,6 +106,7 @@ class Die //models one single dice cube
 			ellipse(dx + 35+3, dy+ 35, 8, 8);
 			ellipse(dx + 25, dy+ 35, 8, 8);
 			ellipse(dx + 35+3, dy+ 15, 8, 8);
+			count = 6;
 
 
 		}
